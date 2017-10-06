@@ -1,1 +1,5 @@
 // NeuroStudio
+
+int main()
+{
+}
