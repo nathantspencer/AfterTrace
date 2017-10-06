@@ -7,14 +7,16 @@ set(CMAKE_CXX_STANDARD 14)
 
 #======================# INCLUDES #==========================#
 include_directories(libs/imgui)
+include_directories(libs/glfw/include)
 
 
 #======================# TARGETS #===========================#
 file(GLOB_RECURSE SOURCES sources/*.cpp sources/*.h)
 file(GLOB IMGUI libs/imgui/*.cpp libs/imgui/*.h)
 add_executable(NeuroStudio ${SOURCES})
+add_subdirectory(libs/glfw)
 add_library(imgui ${IMGUI})
 
 
 #======================# LINKAGE #===========================#
-target_link_libraries(NeuroStudio imgui)
+target_link_libraries(NeuroStudio imgui glfw)
