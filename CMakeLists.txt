@@ -10,14 +10,17 @@ execute_process(COMMAND python gl3w_gen.py --root ${PROJECT_BINARY_DIR}/libs/gl3
 include_directories(libs/imgui)
 include_directories(libs/glfw/include)
 include_directories(libs/gl3w/include)
+include_directories(libs/glm)
+
+#=====================# EXTERNALS #==========================#
+add_subdirectory(libs/glfw)
+add_subdirectory(libs/gl3w)
 
 #======================# TARGETS #===========================#
 file(GLOB_RECURSE SOURCES sources/*.cpp sources/*.h)
-file(GLOB IMGUI libs/imgui/*.cpp libs/imgui/*.h)
 add_executable(NeuroStudio ${SOURCES})
-add_subdirectory(libs/glfw)
-add_subdirectory(libs/gl3w)
-add_library(imgui ${IMGUI})
 
 #======================# LINKAGE #===========================#
+file(GLOB IMGUI libs/imgui/*.cpp libs/imgui/*.h)
+add_library(imgui ${IMGUI})
 target_link_libraries(NeuroStudio imgui glfw gl3w)

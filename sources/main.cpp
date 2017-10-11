@@ -1,5 +1,3 @@
-// NeuroStudio
-
 #include <cstdlib>
 #include "GLFW/glfw3.h"
 #include "imgui.h"
