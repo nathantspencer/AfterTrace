@@ -36,6 +36,7 @@ int main(void)
     
     setup(window);
     
+    // TODO: move this test call to a proper test
     Parser::ParseSWC("test.txt");
     
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
