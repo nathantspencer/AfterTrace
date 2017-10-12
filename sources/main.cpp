@@ -1,6 +1,9 @@
-#include <cstdlib>
 #include "GLFW/glfw3.h"
 #include "imgui.h"
+#include "Parser.h"
+
+#include <cstdlib>
+#include <string>
 
 void setup(GLFWwindow* window);
 void renderer(ImDrawData* draw_data);
@@ -12,7 +15,8 @@ int main(void)
         exit(EXIT_FAILURE);
     }
     
-    static GLFWwindow* window {
+    static GLFWwindow* window
+    {
         glfwCreateWindow(1024, 768, "NeuroStudio", NULL, NULL)
     };
     
@@ -32,6 +36,8 @@ int main(void)
     
     setup(window);
     
+    Parser::ParseSWC("test.txt");
+    
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     while (!glfwWindowShouldClose(window))
     {
@@ -44,7 +50,6 @@ int main(void)
         
         // This creates a window
         ImGui::Begin("Window Title Here");
-        ImGui::Text("Hello, world!");
         ImGui::End();
         
         // ImGui functions end here

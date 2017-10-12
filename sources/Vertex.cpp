@@ -8,7 +8,7 @@ Vertex::Vertex() :
 {
 }
 
-Vertex::Vertex(int64_t id, int64_t parentId, float radius, glm::vec3 position) :
+Vertex::Vertex(uint64_t id,  Type type, glm::vec3 position,  float radius, int64_t parentId) :
     m_id(id),
     m_parentId(parentId),
     m_radius(radius),
@@ -20,7 +20,7 @@ Vertex::~Vertex()
 {
 }
 
-int64_t Vertex::GetId()
+uint64_t Vertex::GetId()
 {
     return m_id;
 }
@@ -38,9 +38,9 @@ float Vertex::GetRadius()
 glm::vec3 Vertex::GetPosition()
 {
     return m_position;
-};
+}
 
-void Vertex::SetId(int64_t id)
+void Vertex::SetId(uint64_t id)
 {
     m_id = id;
 }
@@ -58,4 +58,4 @@ void Vertex::SetRadius(float radius)
 void Vertex::SetPosition(glm::vec3 position)
 {
     m_position = position;
-};
+}
