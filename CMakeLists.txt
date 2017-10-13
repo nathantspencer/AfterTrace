@@ -16,8 +16,16 @@ include_directories(libs/glm)
 add_subdirectory(libs/glfw)
 add_subdirectory(libs/gl3w)
 
-#======================# TARGETS #===========================#
+#======================# FILTERS #===========================#
 file(GLOB_RECURSE SOURCES sources/*.cpp sources/*.h)
+file(GLOB_RECURSE SOURCES_MODEL sources/Model/*.cpp sources/Model/*.h)
+file(GLOB_RECURSE SOURCES_FILEIO sources/FileIO/*.cpp sources/FileIO/*.h)
+
+source_group("" FILES ${SOURCES})
+source_group(Model FILES ${SOURCES_MODEL})
+source_group(FileIO FILES ${SOURCES_FILEIO})
+
+#======================# TARGETS #===========================#
 add_executable(NeuroStudio ${SOURCES})
 
 #======================# LINKAGE #===========================#
