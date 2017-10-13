@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <vector>
 
 Parser::Parser()
@@ -13,7 +12,7 @@ Parser::~Parser()
 {
 }
 
-bool Parser::ParseSWC(std::string path, SWC& result)
+bool Parser::ParseSWC(const std::string& path, SWC& result)
 {
     std::string line;
     std::ifstream file(path, std::ios::binary | std::ios::ate);
@@ -32,24 +31,18 @@ bool Parser::ParseSWC(std::string path, SWC& result)
     m_content = content;
     
     result = SWC();
-    uint64_t numberOfLines = 0;
-    std::map<uint64_t, std::string> rowsToComments;
+    std::vector<Vertex> vertices;
+    std::vector<std::string> comments;
     std::string comment;
     while (GrabCommentLine(comment))
     {
-        rowsToComments[numberOfLines] = comment;
-        numberOfLines++;
+        comments.push_back(comment);
     }
-    result.SetRowsToComments(rowsToComments);
+    result.SetComments(comments);
     
-    std::map<uint64_t, Vertex> rowsToVertices;
-    uint64_t greatestVertexID = 0;
     do
     {
-        while (DiscardCommentLine())
-        {
-            numberOfLines++;
-        };
+        while (DiscardCommentLine());
         
         if (DiscardFileEnding())
         {
@@ -101,13 +94,7 @@ bool Parser::ParseSWC(std::string path, SWC& result)
         
         DiscardSpacing();
         Vertex vertex(id, type, position, radius, parentId);
-        rowsToVertices[numberOfLines] = vertex;
-        numberOfLines++;
-        
-        if(id > greatestVertexID)
-        {
-            greatestVertexID = id;
-        }
+        vertices.push_back(vertex);
     }
     while (DiscardLineEnding());
     
@@ -117,8 +104,7 @@ bool Parser::ParseSWC(std::string path, SWC& result)
         return false;
     }
     
-    result.SetRowsToVertices(rowsToVertices);
-    result.SetGreatestVertexId(greatestVertexID);
+    result.SetVertices(vertices);
     delete[] content;
     file.close();
     

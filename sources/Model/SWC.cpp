@@ -1,9 +1,8 @@
 #include "SWC.h"
 
 SWC::SWC() :
-    m_rowsToComments(std::map<uint64_t, std::string>()),
-    m_rowsToVertices(std::map<uint64_t, Vertex>()),
-    m_greatestVertexId(-1)
+    m_comments(std::vector<std::string>()),
+    m_vertices(std::vector<Vertex>())
 {
 }
 
@@ -11,34 +10,22 @@ SWC::~SWC()
 {
 }
 
-std::map<uint64_t, std::string> SWC::GetRowsToComments()
+std::vector<std::string> SWC::GetComments() const
 {
-    return m_rowsToComments;
+    return m_comments;
 }
 
-std::map<uint64_t, Vertex> SWC::GetRowsToVertices()
+std::vector<Vertex> SWC::GetVertices() const
 {
-    return m_rowsToVertices;
+    return m_vertices;
 }
 
-uint64_t SWC::GetGreatestVertexId()
+void SWC::SetComments(std::vector<std::string> comments)
 {
-    return m_greatestVertexId;
+    m_comments = comments;
 }
 
-void SWC::SetRowsToComments(std::map<uint64_t, std::string> rowsToComments)
+void SWC::SetVertices(std::vector<Vertex> vertices)
 {
-    m_rowsToComments = rowsToComments;
+    m_vertices = vertices;
 }
-
-void SWC::SetRowsToVertices(std::map<uint64_t, Vertex> rowsToVertices)
-{
-    m_rowsToVertices = rowsToVertices;
-}
-
-void SWC::SetGreatestVertexId(uint64_t greatestVertexId)
-{
-    m_greatestVertexId = greatestVertexId;
-}
-
-

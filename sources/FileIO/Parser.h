@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SWC.h"
+#include <Model/SWC.h>
 
 class Parser
 {
@@ -8,7 +8,7 @@ class Parser
         Parser();
         ~Parser();
     
-        bool        ParseSWC(std::string path, SWC& result);
+        bool        ParseSWC(const std::string& path, SWC& result);
     
     private:
         bool        GrabCommentLine(std::string& result);

@@ -11,6 +11,7 @@ include_directories(libs/imgui)
 include_directories(libs/glfw/include)
 include_directories(libs/gl3w/include)
 include_directories(libs/glm)
+include_directories(sources)
 
 #=====================# EXTERNALS #==========================#
 add_subdirectory(libs/glfw)

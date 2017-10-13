@@ -22,22 +22,27 @@ Vertex::~Vertex()
 {
 }
 
-uint64_t Vertex::GetId()
+uint64_t Vertex::GetId() const
 {
     return m_id;
 }
 
-int64_t Vertex::GetParentId()
+Vertex::Type Vertex::GetType() const
+{
+    return m_type;
+}
+
+int64_t Vertex::GetParentId() const
 {
     return m_parentId;
 }
 
-float Vertex::GetRadius()
+float Vertex::GetRadius() const
 {
     return m_radius;
 }
 
-glm::vec3 Vertex::GetPosition()
+glm::vec3 Vertex::GetPosition() const
 {
     return m_position;
 }

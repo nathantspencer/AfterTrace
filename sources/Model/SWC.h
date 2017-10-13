@@ -2,7 +2,7 @@
 
 #include "Vertex.h"
 
-#include <map>
+#include <vector>
 #include <string>
 #include <stdio.h>
 
@@ -12,16 +12,13 @@ class SWC
         SWC();
         ~SWC();
     
-        std::map<uint64_t, std::string> GetRowsToComments();
-        std::map<uint64_t, Vertex>      GetRowsToVertices();
-        uint64_t                        GetGreatestVertexId();
+        std::vector<std::string>    GetComments() const;
+        std::vector<Vertex>         GetVertices() const;
 
-        void                            SetRowsToComments(std::map<uint64_t, std::string> rowsToComments);
-        void                            SetRowsToVertices(std::map<uint64_t, Vertex> rowsToVertices);
-        void                            SetGreatestVertexId(uint64_t greatestVertexId);
+        void                        SetComments(std::vector<std::string> comments);
+        void                        SetVertices(std::vector<Vertex> vertices);
     
     private:
-        std::map<uint64_t, std::string> m_rowsToComments;
-        std::map<uint64_t, Vertex>      m_rowsToVertices;
-        uint64_t                        m_greatestVertexId;
+        std::vector<std::string>    m_comments;
+        std::vector<Vertex>         m_vertices;
 };

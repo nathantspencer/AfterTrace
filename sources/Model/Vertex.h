@@ -24,11 +24,11 @@ class Vertex
     
         ~Vertex();
         
-        uint64_t    GetId();
-        Type        GetType();
-        float       GetRadius();
-        glm::vec3   GetPosition();
-        int64_t     GetParentId();
+        uint64_t    GetId() const;
+        Type        GetType() const;
+        float       GetRadius() const;
+        glm::vec3   GetPosition() const;
+        int64_t     GetParentId() const;
     
         void        SetId(uint64_t id);
         void        SetParentId(int64_t parentId);
