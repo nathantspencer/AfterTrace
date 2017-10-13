@@ -3,26 +3,242 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
-SWC Parser::ParseSWC(std::string path)
+Parser::Parser()
+{
+}
+
+Parser::~Parser()
+{
+}
+
+bool Parser::ParseSWC(std::string path, SWC& result)
 {
     std::string line;
-    std::ifstream myfile(path);
-    
-    if(!myfile.good())
+    std::ifstream file(path, std::ios::binary | std::ios::ate);
+    std::streamsize size = file.tellg();
+    file.seekg(0, std::ios::beg);
+
+    if (!file.is_open())
     {
-        std::cout << "WARNING: ParseSWC(path) could not open file at path" << '\n';
-        return SWC();
+        std::cout << "WARNING: ParseSWC() could not open file at " << path << '\n';
+        return false;
     }
+
+    char* content = new char[static_cast<size_t>(size) + 1];
+    file.read(content, size);
+    content[size] = '\0';
+    m_content = content;
     
-    std::cout << myfile.good();
-    if (myfile.is_open())
+    result = SWC();
+    uint64_t numberOfLines = 0;
+    std::map<uint64_t, std::string> rowsToComments;
+    std::string comment;
+    while (GrabCommentLine(comment))
     {
-        while (getline(myfile,line))
+        rowsToComments[numberOfLines] = comment;
+        numberOfLines++;
+    }
+    result.SetRowsToComments(rowsToComments);
+    
+    std::map<uint64_t, Vertex> rowsToVertices;
+    uint64_t greatestVertexID = 0;
+    do
+    {
+        while (DiscardCommentLine())
         {
-            std::cout << line << '\n';
+            numberOfLines++;
+        };
+        
+        if (DiscardFileEnding())
+        {
+            break;
         }
-        myfile.close();
+
+        uint64_t id;
+        DiscardSpacing();
+        if (!GrabUint64(id))
+        {
+            delete[] content;
+            return false;
+        }
+        
+        Vertex::Type type;
+        DiscardSpacing();
+        if (!GrabType(type))
+        {
+            delete[] content;
+            return false;
+        }
+        
+        glm::vec3 position;
+        for (int i = 0; i < 3; ++i)
+        {
+            DiscardSpacing();
+            if (!GrabFloat(position[i]))
+            {
+                delete[] content;
+                return false;
+            }
+        }
+        
+        float radius;
+        DiscardSpacing();
+        if (!GrabFloat(radius))
+        {
+            delete[] content;
+            return false;
+        }
+        
+        int64_t parentId;
+        DiscardSpacing();
+        if (!GrabInt64(parentId))
+        {
+            delete[] content;
+            return false;
+        }
+        
+        DiscardSpacing();
+        Vertex vertex(id, type, position, radius, parentId);
+        rowsToVertices[numberOfLines] = vertex;
+        numberOfLines++;
+        
+        if(id > greatestVertexID)
+        {
+            greatestVertexID = id;
+        }
     }
-    return SWC();
+    while (DiscardLineEnding());
+    
+    if (!DiscardFileEnding())
+    {
+        delete[] content;
+        return false;
+    }
+    
+    result.SetRowsToVertices(rowsToVertices);
+    result.SetGreatestVertexId(greatestVertexID);
+    delete[] content;
+    file.close();
+    
+    return true;
+}
+
+bool Parser::GrabCommentLine(std::string &result)
+{
+    DiscardSpacing();
+    std::vector<char> characters;
+    if(*m_content == '#')
+    {
+        while(!DiscardLineEnding() && *m_content != '\0')
+        {
+            characters.push_back(*m_content);
+            m_content++;
+        }
+        result = std::string(characters.begin(), characters.end());
+        return true;
+    }
+    return false;
+}
+
+bool Parser::GrabType(Vertex::Type& result)
+{
+    char* endpoint;
+    int integerType = strtol(m_content, &endpoint, 10);
+    
+    if(integerType > Vertex::Type::NUMBER_OF_TYPES)
+    {
+        return false;
+    }
+    
+    result = Vertex::Type(integerType);
+    if (endpoint > m_content)
+    {
+        m_content = endpoint;
+        return true;
+    }
+    return false;
+}
+
+bool Parser::GrabFloat(float& result)
+{
+    char* endpoint;
+    result = strtof(m_content, &endpoint);
+    if (endpoint > m_content)
+    {
+        m_content = endpoint;
+        return true;
+    }
+    return false;
+}
+
+bool Parser::GrabInt64(int64_t& result)
+{
+    char* endpoint;
+    result = strtoll(m_content, &endpoint, 10);
+    if (endpoint > m_content)
+    {
+        m_content = endpoint;
+        return true;
+    }
+    return false;
+}
+
+bool Parser::GrabUint64(uint64_t& result)
+{
+    char* endpoint;
+    result = strtoull(m_content, &endpoint, 10);
+    if (endpoint > m_content)
+    {
+        m_content = endpoint;
+        return true;
+    }
+    return false;
+}
+
+bool Parser::DiscardSpacing()
+{
+    bool spacingFound = false;
+    while (*m_content == '\t' || *m_content == ' ')
+    {
+        spacingFound = true;
+        m_content++;
+    }
+    return spacingFound;
+}
+
+bool Parser::DiscardLineEnding()
+{
+    bool lineEndingFound = false;
+    if (*m_content == '\r')
+    {
+        lineEndingFound = true;
+        m_content++;
+    }
+    if (*m_content == '\n')
+    {
+        lineEndingFound = true;
+        m_content++;
+    }
+    return lineEndingFound;
+}
+
+bool Parser::DiscardFileEnding()
+{
+    return *m_content == '\0';
+}
+
+bool Parser::DiscardCommentLine()
+{
+    DiscardSpacing();
+    if(*m_content == '#')
+    {
+        while(!DiscardLineEnding() && *m_content != '\0')
+        {
+            m_content++;
+        }
+        return true;
+    }
+    return false;
 }

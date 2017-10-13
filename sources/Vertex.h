@@ -1,11 +1,6 @@
-/**
-     
-*/
-
 #pragma once
 
 #include <stdio.h>
-#include <vector>
 #include <glm/vec3.hpp>
 
 class Vertex
@@ -13,14 +8,15 @@ class Vertex
     public:
         enum Type
         {
-            UNDEFINED = 0,
-            SOMA = 1,
-            AXON = 2,
-            DENDRITE = 3,
+            UNDEFINED       = 0,
+            SOMA            = 1,
+            AXON            = 2,
+            DENDRITE        = 3,
             APICAL_DENDRITE = 4,
-            FORK_POINT = 5,
-            END_POINT = 6,
-            CUSTOM = 7
+            FORK_POINT      = 5,
+            END_POINT       = 6,
+            CUSTOM          = 7,
+            NUMBER_OF_TYPES = CUSTOM
         };
     
         Vertex();
@@ -29,7 +25,7 @@ class Vertex
         ~Vertex();
         
         uint64_t    GetId();
-        Type         GetType();
+        Type        GetType();
         float       GetRadius();
         glm::vec3   GetPosition();
         int64_t     GetParentId();
@@ -42,7 +38,8 @@ class Vertex
     
     private:
         uint64_t    m_id;
-        int64_t     m_parentId;
-        float       m_radius;
+        Type        m_type;
         glm::vec3   m_position;
+        float       m_radius;
+        int64_t     m_parentId;
 };

@@ -2,17 +2,19 @@
 
 Vertex::Vertex() :
     m_id(-1),
-    m_parentId(-1),
+    m_type(UNDEFINED),
+    m_position(glm::vec3()),
     m_radius(0.0f),
-    m_position(glm::vec3())
+    m_parentId(-1)
 {
 }
 
-Vertex::Vertex(uint64_t id,  Type type, glm::vec3 position,  float radius, int64_t parentId) :
+Vertex::Vertex(uint64_t id, Type type, glm::vec3 position, float radius, int64_t parentId) :
     m_id(id),
-    m_parentId(parentId),
+    m_type(type),
+    m_position(position),
     m_radius(radius),
-    m_position(position)
+    m_parentId(parentId)
 {
 }
 
