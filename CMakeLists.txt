@@ -21,10 +21,12 @@ add_subdirectory(libs/gl3w)
 file(GLOB_RECURSE SOURCES sources/*.cpp sources/*.h)
 file(GLOB_RECURSE SOURCES_MODEL sources/Model/*.cpp sources/Model/*.h)
 file(GLOB_RECURSE SOURCES_FILEIO sources/FileIO/*.cpp sources/FileIO/*.h)
+file(GLOB_RECURSE SOURCES_GUI sources/GUI/*.cpp sources/GUI/*.h)
 
 source_group("" FILES ${SOURCES})
 source_group(Model FILES ${SOURCES_MODEL})
 source_group(FileIO FILES ${SOURCES_FILEIO})
+source_group(GUI FILES ${SOURCES_GUI})
 
 #======================# TARGETS #===========================#
 add_executable(NeuroStudio ${SOURCES})

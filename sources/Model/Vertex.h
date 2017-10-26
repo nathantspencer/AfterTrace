@@ -6,6 +6,7 @@
 class Vertex
 {
     public:
+    
         enum Type
         {
             UNDEFINED       = 0,
@@ -21,7 +22,6 @@ class Vertex
     
         Vertex();
         Vertex(uint64_t id,  Type type, glm::vec3 position,  float radius, int64_t parentId);
-    
         ~Vertex();
         
         uint64_t    GetId() const;
@@ -30,13 +30,13 @@ class Vertex
         glm::vec3   GetPosition() const;
         int64_t     GetParentId() const;
     
-        void        SetId(uint64_t id);
-        void        SetParentId(int64_t parentId);
-        void        SetRadius(float radius);
-        void        SetPosition(glm::vec3 position);
-    
+        void    SetId(uint64_t id);
+        void    SetParentId(int64_t parentId);
+        void    SetRadius(float radius);
+        void    SetPosition(glm::vec3 position);
     
     private:
+    
         uint64_t    m_id;
         Type        m_type;
         glm::vec3   m_position;
