@@ -1,8 +1,13 @@
-#include <imgui.h>
-#include "imgui_impl_glfw_gl3.h"
-#include <stdio.h>
 #include <GL/gl3w.h>
 #include <GLFW/glfw3.h>
+
+#include "Application.h"
+
+#include <stdio.h>
+#include <chrono>
+
+#include <imgui.h>
+#include "ImGuiImpl/imgui_impl_glfw_gl3.h"
 
 static void error_callback(int error, const char* description)
 {
@@ -34,14 +39,15 @@ int main(int, char**)
     // Load Font
     ImGuiIO& io = ImGui::GetIO();
     io.Fonts->AddFontFromFileTTF("../../libs/imgui/extra_fonts/Cousine-Regular.ttf", 14.0f);
-
-    // Toggle display of ImGui demo here!
-    bool showImGuiDemo = true;
-    bool showAdjustmentWindow = true;
-    bool showDataWindow = true;
     
     // Background color
     ImVec4 clear_color = ImVec4(0.25f, 0.25f, 0.25f, 1.0f);
+    
+    // Start timer
+    auto startTime = std::chrono::steady_clock::now();
+    
+    // Generate Application instance
+    Application application = Application(window);
 
     // Main loop
     ImGui::PushStyleVar(ImGuiStyleVar_ChildWindowRounding, 0.0f);
@@ -49,54 +55,14 @@ int main(int, char**)
     {
         glfwPollEvents();
         ImGui_ImplGlfwGL3_NewFrame();
-
-        // =================================vvv===============================
-        // TODO: Move these windows to GUI
-        // =================================vvv===============================
         
-        // Adjustment Window
-        ImGuiWindowFlags adjustmentWindowFlags = 0;
-        adjustmentWindowFlags |= ImGuiWindowFlags_MenuBar;
+        // Calculate time delta in seconds
+        auto currentTime = std::chrono::steady_clock::now();
+        std::chrono::duration<double> duration = currentTime - startTime;
+        float deltaSeconds = duration.count();
         
-        int width, height;
-        glfwGetWindowSize(window, &width, &height);
-        ImGui::SetNextWindowPos(ImVec2(0.0f, 0.0f), ImGuiCond_Once);
-        ImGui::SetNextWindowSize(ImVec2(width / 3.0f, height), ImGuiCond_Once);
-        ImGui::Begin("Adjustment Window", &showAdjustmentWindow, adjustmentWindowFlags);
-
-        ImGui::Text("Scale, translate, & rotate models");
-        ImGui::ColorEdit3("clear color", (float*)&clear_color);
-        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
-        ImGui::End();
-        
-        // Data window
-        ImGuiWindowFlags dataWindowFlags = 0;
-        dataWindowFlags |= ImGuiWindowFlags_MenuBar;
-
-        ImGui::SetNextWindowPos(ImVec2(width / 3.0f + 1.0f, 0.0f), ImGuiCond_Once);
-        ImGui::SetNextWindowSize(ImVec2(width * 2.0f / 3.0f, height), ImGuiCond_Once);
-        ImGui::Begin("Another Window", &showDataWindow, dataWindowFlags);
-
-        if (ImGui::BeginMenuBar())
-        {
-            if (ImGui::BeginMenu("Menu"))
-            {
-                ImGui::MenuItem("Main menu bar", NULL, nullptr);
-                ImGui::EndMenu();
-            }
-            ImGui::EndMenuBar();
-        }
-        ImGui::Text("Hello from another window!");
-        ImGui::End();
-        
-        // ImGui demo window
-        if (showImGuiDemo)
-        {
-            ImGui::SetNextWindowPos(ImVec2(650, 20), ImGuiCond_FirstUseEver);
-            ImGui::ShowTestWindow(&showImGuiDemo);
-        }
-        
-        // =================================^^^===============================
+        // Call application update
+        application.Update(deltaSeconds);
 
         // Rendering
         int display_w, display_h;
