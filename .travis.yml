@@ -2,15 +2,8 @@ language: cpp
 
 matrix:
   include:
-    - compiler: gcc
-      os: linux
     - compiler: clang
       os: osx
-
-before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]];
-    then sudo apt-get install xorg-dev libglu1-mesa-dev;
-    fi
 
 script:
   - mkdir Build && cd Build
