@@ -3,6 +3,7 @@
 #include <GLFW/glfw3.h>
 
 #include "GUI/Window/AdjustmentWindow.h"
+#include "GUI/WIndow/DataWindow.h"
 
 class Application
 {
@@ -21,4 +22,5 @@ class Application
         GLFWwindow* m_glfwWindow;
     
         AdjustmentWindow    m_adjustmentWindow;
+        DataWindow          m_dataWindow;
 };

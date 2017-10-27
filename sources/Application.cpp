@@ -5,14 +5,18 @@
 
 Application::Application(GLFWwindow* glfwWindow) :
     m_glfwWindow(glfwWindow),
-    m_adjustmentWindow("Adjustment Window", m_glfwWindow)
+    m_adjustmentWindow("Adjustment Window", m_glfwWindow),
+    m_dataWindow("Data Window", m_glfwWindow)
 {
-    int windowFlags = 0;
-    windowFlags |= ImGuiWindowFlags_MenuBar;
-    windowFlags |= ImGuiWindowFlags_NoResize;
-    windowFlags |= ImGuiWindowFlags_NoMove;
-    windowFlags |= ImGuiWindowFlags_NoCollapse;
-    m_adjustmentWindow.SetFlags(windowFlags);
+    int adjustmentWindowFlags = 0;
+    adjustmentWindowFlags |= ImGuiWindowFlags_NoResize;
+    adjustmentWindowFlags |= ImGuiWindowFlags_NoMove;
+    adjustmentWindowFlags |= ImGuiWindowFlags_NoCollapse;
+    m_adjustmentWindow.SetFlags(adjustmentWindowFlags);
+    
+    int dataWindowFlags = adjustmentWindowFlags;
+    dataWindowFlags |= ImGuiWindowFlags_MenuBar;
+    m_dataWindow.SetFlags(dataWindowFlags);
 }
 
 Application::~Application()
@@ -22,6 +26,7 @@ Application::~Application()
 void Application::Update(float deltaSeconds)
 {
     m_adjustmentWindow.Update(deltaSeconds);
+    m_dataWindow.Update(deltaSeconds);
     
     /*
     // Data window
