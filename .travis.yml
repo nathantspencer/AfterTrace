@@ -1,10 +1,15 @@
 language: cpp
+
 matrix:
   include:
     - compiler: gcc
       os: linux
     - compiler: clang
       os: osx
+
+before_install:
+  - sudo apt-get install xorg-dev libglu1-mesa-dev
+    os: linux
 
 script:
   - mkdir Build && cd Build
