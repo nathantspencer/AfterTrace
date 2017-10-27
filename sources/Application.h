@@ -3,7 +3,7 @@
 #include <GLFW/glfw3.h>
 
 #include "GUI/Window/AdjustmentWindow.h"
-#include "GUI/WIndow/DataWindow.h"
+#include "GUI/Window/DataWindow.h"
 
 class Application
 {
@@ -23,4 +23,6 @@ class Application
     
         AdjustmentWindow    m_adjustmentWindow;
         DataWindow          m_dataWindow;
+    
+        const bool          c_showImguiDemo;
 };
