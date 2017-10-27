@@ -14,13 +14,11 @@ class Application
         void    Init();
         void    Update(float deltaSeconds);
     
+        GLFWwindow* GetGlfwWindow();
+    
     private:
     
         GLFWwindow* m_glfwWindow;
     
-        bool   m_showAdjustmentWindow;
-        bool   m_showDataWindow;
-        bool   m_showImGuiDemoWindow;
-    
-        AdjustmentWindow*   m_adjustmentWindow;
+        AdjustmentWindow    m_adjustmentWindow;
 };

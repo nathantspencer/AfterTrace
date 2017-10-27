@@ -12,7 +12,7 @@ void AdjustmentWindow::Update(float deltaSeconds)
     glfwGetWindowSize(GetGlfwWindow(), &width, &height);
     ImGui::SetNextWindowPos(ImVec2(0.0f, 0.0f), ImGuiCond_Once);
     ImGui::SetNextWindowSize(ImVec2(width / 3.0f, height), ImGuiCond_Once);
-    ImGui::Begin(GetTitle(), &GetShowWindow(), GetFlags());
+    ImGui::Begin(GetTitle(), NULL, GetFlags());
     
     ImGui::Text("Scale, translate, rotate models etc.");
     ImGui::End();

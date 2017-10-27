@@ -5,25 +5,23 @@
 
 Application::Application(GLFWwindow* glfwWindow) :
     m_glfwWindow(glfwWindow),
-    m_showAdjustmentWindow(true),
-    m_showDataWindow(true),
-    m_showImGuiDemoWindow(true)
+    m_adjustmentWindow("Adjustment Window", m_glfwWindow)
 {
-    m_adjustmentWindow = new AdjustmentWindow("Adjustment Window", m_showAdjustmentWindow, m_glfwWindow);
-    int adjustmentWindowFlags = 0;
-    adjustmentWindowFlags |= ImGuiWindowFlags_MenuBar;
-    m_adjustmentWindow->SetFlags(adjustmentWindowFlags);
+    int windowFlags = 0;
+    windowFlags |= ImGuiWindowFlags_MenuBar;
+    windowFlags |= ImGuiWindowFlags_NoResize;
+    windowFlags |= ImGuiWindowFlags_NoMove;
+    windowFlags |= ImGuiWindowFlags_NoCollapse;
+    m_adjustmentWindow.SetFlags(windowFlags);
 }
 
 Application::~Application()
 {
-    delete m_adjustmentWindow;
-    m_adjustmentWindow = nullptr;
 }
 
 void Application::Update(float deltaSeconds)
 {
-    m_adjustmentWindow->Update(deltaSeconds);
+    m_adjustmentWindow.Update(deltaSeconds);
     
     /*
     // Data window
@@ -52,7 +50,10 @@ void Application::Update(float deltaSeconds)
         ImGui::SetNextWindowPos(ImVec2(650, 20), ImGuiCond_FirstUseEver);
         ImGui::ShowTestWindow(&m_showImGuiDemoWindow);
     }
-    
-    // =================================^^^===============================
      */
+}
+
+GLFWwindow* Application::GetGlfwWindow()
+{
+    return m_glfwWindow;
 }

@@ -1,8 +1,7 @@
 #include "IWindow.h"
 
-IWindow::IWindow(const char* title, bool& showWindow, GLFWwindow* glfwWindow) :
+IWindow::IWindow(const char* title, GLFWwindow* glfwWindow) :
     m_title(title),
-    m_showWindow(showWindow),
     m_flags(0),
     m_glfwWindow(glfwWindow)
 {
@@ -30,11 +29,6 @@ void IWindow::SetFlags(ImGuiWindowFlags flags)
 const char* IWindow::GetTitle() const
 {
     return m_title;
-}
-
-bool& IWindow::GetShowWindow() const
-{
-    return m_showWindow;
 }
 
 ImGuiWindowFlags IWindow::GetFlags() const

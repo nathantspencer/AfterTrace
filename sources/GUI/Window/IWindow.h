@@ -10,7 +10,7 @@ class IWindow
 {
     public:
     
-        IWindow(const char* title, bool& showWindow, GLFWwindow* glfwWindow);
+        IWindow(const char* title, GLFWwindow* glfwWindow);
         virtual ~IWindow();
     
         virtual void    Update(float deltaSeconds) = 0;
@@ -20,14 +20,12 @@ class IWindow
         void    SetFlags(ImGuiWindowFlags flags);
     
         const char*         GetTitle() const;
-        bool&               GetShowWindow() const;
         ImGuiWindowFlags    GetFlags() const;
         GLFWwindow*         GetGlfwWindow() const;
     
     private:
     
         const char*         m_title;
-        bool&               m_showWindow;
         ImGuiWindowFlags    m_flags;
     
         glm::vec2   m_normalizedInitialSize;
