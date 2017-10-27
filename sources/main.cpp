@@ -7,7 +7,7 @@
 #include <chrono>
 
 #include <imgui.h>
-#include "ImGuiImpl/imgui_impl_glfw_gl3.h"
+#include "ImguiImpl/imgui_impl_glfw_gl3.h"
 
 static void error_callback(int error, const char* description)
 {
