@@ -11,7 +11,7 @@ class IWindow
     public:
     
         IWindow(const char* title, bool& showWindow, GLFWwindow* glfwWindow);
-        ~IWindow();
+        virtual ~IWindow();
     
         virtual void    Update(float deltaSeconds) = 0;
     
