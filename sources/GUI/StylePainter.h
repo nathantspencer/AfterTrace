@@ -13,6 +13,7 @@ class StylePainter
     
     void    PaintDataWindow();
     void    PaintAdjustmentWindow();
+    void    PaintMainMenuBar();
     
   private:
     

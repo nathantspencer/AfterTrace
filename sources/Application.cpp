@@ -5,7 +5,7 @@
 
 Application::Application(GLFWwindow* glfwWindow) :
     m_glfwWindow(glfwWindow),
-    m_mainMenuBar(),
+    m_mainMenuBar(&m_stylePainter),
     m_adjustmentWindow("Adjustment Window", &m_stylePainter, m_glfwWindow),
     m_dataWindow("Data Window", &m_stylePainter, m_glfwWindow),
     m_stylePainter(),
