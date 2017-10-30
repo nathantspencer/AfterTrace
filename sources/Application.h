@@ -12,7 +12,6 @@ class Application
         Application(GLFWwindow* glfwWindow);
         ~Application();
     
-        void    Init();
         void    Update(float deltaSeconds);
     
         GLFWwindow* GetGlfwWindow();
@@ -23,6 +22,7 @@ class Application
     
         AdjustmentWindow    m_adjustmentWindow;
         DataWindow          m_dataWindow;
+        StylePainter        m_stylePainter;
     
         const bool          c_showImguiDemo;
 };

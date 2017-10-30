@@ -5,8 +5,9 @@
 
 Application::Application(GLFWwindow* glfwWindow) :
     m_glfwWindow(glfwWindow),
-    m_adjustmentWindow("Adjustment Window", m_glfwWindow),
-    m_dataWindow("Data Window", m_glfwWindow),
+    m_adjustmentWindow("Adjustment Window", &m_stylePainter, m_glfwWindow),
+    m_dataWindow("Data Window", &m_stylePainter, m_glfwWindow),
+    m_stylePainter(),
     c_showImguiDemo(false)
 {
     int windowFlags = 0;
@@ -14,6 +15,7 @@ Application::Application(GLFWwindow* glfwWindow) :
     windowFlags |= ImGuiWindowFlags_NoMove;
     windowFlags |= ImGuiWindowFlags_NoCollapse;
     windowFlags |= ImGuiWindowFlags_ShowBorders;
+    
     m_adjustmentWindow.SetFlags(windowFlags);
     m_dataWindow.SetFlags(windowFlags);
 }
@@ -24,6 +26,8 @@ Application::~Application()
 
 void Application::Update(float deltaSeconds)
 {
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
+    
     ImGui::BeginMainMenuBar();
     ImGui::EndMainMenuBar();
     
@@ -35,6 +39,8 @@ void Application::Update(float deltaSeconds)
         ImGui::SetNextWindowPos(ImVec2(650, 20), ImGuiCond_FirstUseEver);
         ImGui::ShowTestWindow(NULL);
     }
+    
+    ImGui::PopStyleVar();
 }
 
 GLFWwindow* Application::GetGlfwWindow()

@@ -6,7 +6,8 @@ class AdjustmentWindow : public IWindow
 {
     public:
     
-        AdjustmentWindow(const char* title, GLFWwindow* glfwWindow) : IWindow(title, glfwWindow) {};
+        AdjustmentWindow(const char* title, StylePainter* stylePainter, GLFWwindow* glfwWindow) :
+            IWindow(title, stylePainter, glfwWindow) {};
         ~AdjustmentWindow();
     
         void    Update(float deltaSeconds) override;

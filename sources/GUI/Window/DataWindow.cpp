@@ -8,13 +8,13 @@ DataWindow::~DataWindow()
 
 void DataWindow::Update(float deltaSeconds)
 {
-    ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
-
-    // set initial geometry
+    GetStylePainter()->PaintDataWindow();
+    
+    // initial geometry
     int glfwWidth, glfwHeight;
     glfwGetWindowSize(GetGlfwWindow(), &glfwWidth, &glfwHeight);
-    ImGui::SetNextWindowPos(ImVec2(glfwWidth / 4.0f, 20.0f), ImGuiCond_Once);
-    ImGui::SetNextWindowSize(ImVec2(3.0f * glfwWidth / 4.0f, glfwHeight), ImGuiCond_Once);
+    ImGui::SetNextWindowPos(ImVec2(glfwWidth / 5.0f, 20.0f), ImGuiCond_Once);
+    ImGui::SetNextWindowSize(ImVec2(4.0f * glfwWidth / 5.0f, glfwHeight), ImGuiCond_Once);
     
     if  (m_leftOffset == -1.0f)
     {
@@ -23,12 +23,10 @@ void DataWindow::Update(float deltaSeconds)
     
     ImGui::Begin(GetTitle(), NULL, GetFlags());
     
-    // set geometry for resized glfwWindow
+    // update geometry
     ImGui::SetWindowSize(ImVec2(glfwWidth - m_leftOffset, glfwHeight), ImGuiCond_Always);
     ImGui::SetWindowPos(ImVec2(m_leftOffset, 20.0f), ImGuiCond_Always);
     
     ImGui::Text("Your data live here.");
     ImGui::End();
-    
-    ImGui::PopStyleVar();
 }

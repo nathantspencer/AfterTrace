@@ -2,6 +2,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include "GUI/StylePainter.h"
+
 #include <imgui.h>
 #include <glm/vec2.hpp>
 #include <string>
@@ -10,7 +12,7 @@ class IWindow
 {
     public:
     
-        IWindow(const char* title, GLFWwindow* glfwWindow);
+        IWindow(const char* title, StylePainter* stylePainter, GLFWwindow* glfwWindow);
         virtual ~IWindow();
     
         virtual void    Update(float deltaSeconds) = 0;
@@ -22,6 +24,7 @@ class IWindow
         const char*         GetTitle() const;
         ImGuiWindowFlags    GetFlags() const;
         GLFWwindow*         GetGlfwWindow() const;
+        StylePainter*       GetStylePainter() const;
     
     private:
     
@@ -31,5 +34,6 @@ class IWindow
         glm::vec2   m_normalizedInitialSize;
         glm::vec2   m_normalizedInitialPosition;
     
-        GLFWwindow* m_glfwWindow;
+        GLFWwindow*     m_glfwWindow;
+        StylePainter*   m_stylePainter;
 };
