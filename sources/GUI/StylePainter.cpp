@@ -9,7 +9,7 @@ StylePainter::StylePainter() :
     m_colors["lightPurple"] = ImVec4(0.28f, 0.28f, 0.43f, 1.00f);
     m_colors["whiteShadow"] = ImVec4(1.00f, 1.00f, 1.00f, 0.10f);
     m_colors["blackShadow"] = ImVec4(0.00f, 0.00f, 0.00f, 0.40f);
-    m_colors["offWhite"]    = ImVec4(0.91f, 0.90f, 0.92f, 1.00f);
+    m_colors["offWhite"]    = ImVec4(0.81f, 0.80f, 0.82f, 1.00f);
 }
 
 StylePainter::~StylePainter()
