@@ -23,6 +23,7 @@ file(GLOB_RECURSE SOURCES_MODEL sources/Model/*.cpp sources/Model/*.h)
 file(GLOB_RECURSE SOURCES_FILEIO sources/FileIO/*.cpp sources/FileIO/*.h)
 file(GLOB SOURCES_GUI sources/GUI/*.cpp sources/GUI/*.h)
 file(GLOB_RECURSE SOURCES_GUI_WINDOW sources/GUI/Window/*.cpp sources/GUI/Window/*.h)
+file(GLOB_RECURSE SOURCES_GUI_MENUBAR sources/GUI/MenuBar/*.cpp sources/GUI/MenuBar/*.h)
 file(GLOB_RECURSE SOURCES_IMGUIIMPL sources/ImguiImpl/*.cpp sources/ImguiImpl/*.h)
 
 source_group("" FILES ${SOURCES})
@@ -30,6 +31,7 @@ source_group(Model FILES ${SOURCES_MODEL})
 source_group(FileIO FILES ${SOURCES_FILEIO})
 source_group(GUI FILES ${SOURCES_GUI})
 source_group(GUI\\Window FILES ${SOURCES_GUI_WINDOW})
+source_group(GUI\\MenuBar FILES ${SOURCES_GUI_MENUBAR})
 source_group(ImguiImpl FILES ${SOURCES_IMGUIIMPL})
 
 #======================# TARGETS #===========================#

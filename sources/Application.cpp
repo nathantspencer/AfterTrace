@@ -5,6 +5,7 @@
 
 Application::Application(GLFWwindow* glfwWindow) :
     m_glfwWindow(glfwWindow),
+    m_mainMenuBar(),
     m_adjustmentWindow("Adjustment Window", &m_stylePainter, m_glfwWindow),
     m_dataWindow("Data Window", &m_stylePainter, m_glfwWindow),
     m_stylePainter(),
@@ -28,9 +29,7 @@ void Application::Update(float deltaSeconds)
 {
     ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
     
-    ImGui::BeginMainMenuBar();
-    ImGui::EndMainMenuBar();
-    
+    m_mainMenuBar.Update(deltaSeconds);
     m_adjustmentWindow.Update(deltaSeconds);
     m_dataWindow.Update(deltaSeconds);
     
