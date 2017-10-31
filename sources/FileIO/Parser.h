@@ -2,13 +2,29 @@
 
 #include <Model/SWC.h>
 
+/*! Parses imported files into data models.
+ *
+ *  Instances of this class are used to parse data files and load their contents
+ *  into data models such as `SWC`.
+ */
 class Parser
 {
     public:
     
+        /*! The constructor for `Parser`.
+         */
         Parser();
+    
+        /*! The destructor for `Parser`.
+         */
         ~Parser();
     
+        /*! Parses an `.swc` file of known path into the `SWC` data model.
+         *
+         *  @param path a `string` path to the `.swc` file to be parsed
+         *  @param result a reference to an `SWC` model instance to populate with data
+         *  @return a flag which indicates successful parsing (`true`) or failure (`false`)
+         */
         bool    ParseSWC(const std::string& path, SWC& result);
     
     private:
