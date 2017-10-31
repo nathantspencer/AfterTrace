@@ -31,5 +31,4 @@ class AdjustmentWindow : public IWindow
     
     private:
     
-        void    SetWindowGeometry();
 };

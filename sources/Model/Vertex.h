@@ -3,10 +3,16 @@
 #include <stdio.h>
 #include <glm/vec3.hpp>
 
+/*! Data model for graph vertex information.
+ *
+ *  Each vertex in a graph is represented by an instance of this class.
+ */
 class Vertex
 {
     public:
     
+        /*! The type of the neuronal segment represented by a `Vertex`.
+         */
         enum Type
         {
             UNDEFINED       = 0,
@@ -16,12 +22,31 @@ class Vertex
             APICAL_DENDRITE = 4,
             FORK_POINT      = 5,
             END_POINT       = 6,
-            CUSTOM          = 7,
-            NUMBER_OF_TYPES = CUSTOM
+            CUSTOM          = 7
         };
     
+        /*! The default constructor for `Vertex`.
+         *
+         *  Creates a `Vertex` with default values. Note that an instance created in tis way cannot be used
+         *  without setting at least the ID of the `Vertex` after the fact because this constructor
+         *  assigns an impossible ID of -1.
+         */
         Vertex();
+    
+        /*! The constructor for a `Vertex` with known attributes.
+         *
+         *  Creates a `Vertex` with the given ID, parent, type, position, and radius.
+         *
+         *  @param id a natural number ID to be assigned to the new `Vertex`
+         *  @param type the type of the neuronal segment represented by the new `Vertex`
+         *  @param position the 3-dimensional position of the new `Vertex`
+         *  @param radius the radius to be assigned to the new `Vertex`
+         *  @param parentId the natural number ID of the new `Vertex`'s parent, or -1 if the new `Vertex` is a root
+         */
         Vertex(uint64_t id,  Type type, glm::vec3 position,  float radius, int64_t parentId);
+    
+        /* The deconstructor for `Vertex`.
+         */
         ~Vertex();
         
         uint64_t    GetId() const;
