@@ -23,22 +23,23 @@ StylePainter::~StylePainter()
 {
 }
 
-void StylePainter::PaintDataWindow()
+void StylePainter::PaintAdjustmentWindow()
 {
     auto& style = ImGui::GetStyle();
     style.Colors[ImGuiCol_Text]             = m_colors["offWhite"];
-    style.Colors[ImGuiCol_WindowBg]         = m_colors["darkGray"];
+    style.Colors[ImGuiCol_WindowBg]         = m_colors["gray"];
     style.Colors[ImGuiCol_Border]           = m_colors["blackShadow"];
     style.Colors[ImGuiCol_BorderShadow]     = m_colors["whiteShadow"];
     style.Colors[ImGuiCol_TitleBg]          = m_colors["purple"];
     style.Colors[ImGuiCol_TitleBgActive]    = m_colors["lightPurple"];
 }
 
-void StylePainter::PaintAdjustmentWindow()
+
+void StylePainter::PaintDataWindow()
 {
     auto& style = ImGui::GetStyle();
     style.Colors[ImGuiCol_Text]             = m_colors["offWhite"];
-    style.Colors[ImGuiCol_WindowBg]         = m_colors["gray"];
+    style.Colors[ImGuiCol_WindowBg]         = m_colors["darkGray"];
     style.Colors[ImGuiCol_Border]           = m_colors["blackShadow"];
     style.Colors[ImGuiCol_BorderShadow]     = m_colors["whiteShadow"];
     style.Colors[ImGuiCol_TitleBg]          = m_colors["purple"];
