@@ -8,19 +8,30 @@
 #include <glm/vec2.hpp>
 #include <string>
 
+/*! Abstract class for GUI windows within the `GLFWwindow`.
+ */
 class IWindow
 {
     public:
     
+        /*! Abstract class for GUI windows within the `GLFWwindow`.
+         *
+         *  A single instance of this class is created by `Application` and passed to the `GUI`
+         *  elements it owns.
+         */
         IWindow(const char* title, StylePainter* stylePainter, GLFWwindow* glfwWindow);
+    
+        /*! Virtual destructor for `IWindow`.
+         */
         virtual ~IWindow();
     
+        /*! Pure virtual update function, should contain `ImGui` calls to draw the window.
+         *
+         *  @param deltaSeconds the `float` number of seconds since the last update
+         */
         virtual void    Update(float deltaSeconds) = 0;
-    
-        void    SetNormalizedInitialSize(glm::vec2 normalizedInitialSize);
-        void    SetNormalizedInitialPosition(glm::vec2 normalizedInitialPosition);
-        void    SetFlags(ImGuiWindowFlags flags);
-    
+
+        void                SetFlags(ImGuiWindowFlags flags);
         const char*         GetTitle() const;
         ImGuiWindowFlags    GetFlags() const;
         GLFWwindow*         GetGlfwWindow() const;
@@ -30,10 +41,6 @@ class IWindow
     
         const char*         m_title;
         ImGuiWindowFlags    m_flags;
-    
-        glm::vec2   m_normalizedInitialSize;
-        glm::vec2   m_normalizedInitialPosition;
-    
-        GLFWwindow*     m_glfwWindow;
-        StylePainter*   m_stylePainter;
+        GLFWwindow*         m_glfwWindow;
+        StylePainter*       m_stylePainter;
 };

@@ -2,7 +2,7 @@
 
 #include "GUI/StylePainter.h"
 
-/*! Draws `ImGui` elements for the main menu bar each update.
+/*! Draws `ImGui` elements for the main menu bar on each update.
  *
  *  A single instance of this class is created by `Application`.
  */

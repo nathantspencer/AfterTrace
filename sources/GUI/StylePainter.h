@@ -4,7 +4,7 @@
 #include <map>
 #include <string>
 
-/*! Applies `ImGui` styles to other `GUI` elements.
+/*! Applies `ImGui` styles to other GUI elements.
  *
  *  A single instance of this class is created by `Application` and passed to the `GUI`
  *  elements it owns.
@@ -17,7 +17,7 @@ class StylePainter
      */
     StylePainter();
     
-    /*! The deconstructor for `StylePainter`.
+    /*! The destructor for `StylePainter`.
      */
     ~StylePainter();
     

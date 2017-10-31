@@ -12,16 +12,6 @@ IWindow::~IWindow()
 {
 }
 
-void IWindow::SetNormalizedInitialSize(glm::vec2 normalizedInitialSize)
-{
-    m_normalizedInitialSize = normalizedInitialSize;
-}
-
-void IWindow::SetNormalizedInitialPosition(glm::vec2 normalizedInitialPosition)
-{
-    m_normalizedInitialPosition = normalizedInitialPosition;
-}
-
 void IWindow::SetFlags(ImGuiWindowFlags flags)
 {
     m_flags = flags;
