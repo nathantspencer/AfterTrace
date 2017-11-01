@@ -12,5 +12,5 @@ before_install:
 - chmod 0600 config/travisci_rsa
 - cp config/travisci_rsa ~/.ssh/id_rsa
 after_success:
-- sudo brew install doxygen
-- ./config/publish-doxygen
+- brew install doxygen
+- ./../config/publish-doxygen
