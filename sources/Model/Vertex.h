@@ -22,7 +22,8 @@ class Vertex
             APICAL_DENDRITE = 4,
             FORK_POINT      = 5,
             END_POINT       = 6,
-            CUSTOM          = 7
+            CUSTOM          = 7,
+            NUMBER_OF_TYPES = 8
         };
     
         /*! The default constructor for `Vertex`.

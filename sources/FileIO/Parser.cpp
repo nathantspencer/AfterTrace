@@ -133,7 +133,7 @@ bool Parser::GrabType(Vertex::Type& result)
     char* endpoint;
     int integerType = strtol(m_content, &endpoint, 10);
     
-    if(integerType > Vertex::Type::NUMBER_OF_TYPES)
+    if(integerType >= Vertex::Type::NUMBER_OF_TYPES)
     {
         return false;
     }

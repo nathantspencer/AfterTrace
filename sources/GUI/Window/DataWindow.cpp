@@ -13,8 +13,8 @@ void DataWindow::Update(float deltaSeconds)
     // initial geometry
     int glfwWidth, glfwHeight;
     glfwGetWindowSize(GetGlfwWindow(), &glfwWidth, &glfwHeight);
-    ImGui::SetNextWindowPos(ImVec2(glfwWidth / 5.0f, 20.0f), ImGuiCond_Once);
-    ImGui::SetNextWindowSize(ImVec2(4.0f * glfwWidth / 5.0f, glfwHeight), ImGuiCond_Once);
+    ImGui::SetNextWindowPos(ImVec2(glfwWidth / 6.0f, 20.0f), ImGuiCond_Once);
+    ImGui::SetNextWindowSize(ImVec2(5.0f * glfwWidth / 6.0f, glfwHeight), ImGuiCond_Once);
     
     if  (m_leftOffset == -1.0f)
     {

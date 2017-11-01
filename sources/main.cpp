@@ -71,19 +71,26 @@ int main(int, char**)
     ImGuiIO& io = ImGui::GetIO();
     io.Fonts->AddFontFromFileTTF("../../libs/imgui/extra_fonts/Cousine-Regular.ttf", 14.0f);
     
-    auto startTime = std::chrono::steady_clock::now();
+    auto lastTime = std::chrono::steady_clock::now();
     
     // Main loop
     ImGui::PushStyleVar(ImGuiStyleVar_ChildWindowRounding, 0.0f);
     while (!glfwWindowShouldClose(window))
     {
-        glfwPollEvents();
-        
         // Calculate time delta in seconds
         auto currentTime = std::chrono::steady_clock::now();
-        std::chrono::duration<double> duration = currentTime - startTime;
+        std::chrono::duration<double> duration = currentTime - lastTime;
         float deltaSeconds = duration.count();
         
+        // Limit to 60 fps
+        if (deltaSeconds < 1.0f / 60.0f)
+        {
+            continue;
+        }
+        
+        // Do the heavy lifting
+        lastTime = currentTime;
+        glfwPollEvents();
         Draw(window, deltaSeconds);
     }
 
