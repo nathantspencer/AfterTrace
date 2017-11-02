@@ -3,7 +3,7 @@
 REPO_PATH=git@github.com:nathantspencer/NeuroStudio.git
 HTML_PATH=docs/html
 COMMIT_USER="DoxygenScribe"
-COMMIT_EMAIL="ntspencer@mix.wvu.edu"
+COMMIT_EMAIL="nathantspencer@gmail.com"
 CHANGESET=$(git rev-parse --verify HEAD)
 
 rm -rf $HTML_PATH
