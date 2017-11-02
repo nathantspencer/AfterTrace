@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 REPO_PATH=git@github.com:nathantspencer/NeuroStudio.git
 HTML_PATH=build/doc/html
