@@ -14,7 +14,7 @@ cd $HTML_PATH
 git rm -rf .
 cd -
 
-doxygen
+doxygen ./config
 
 cd $HTML_PATH
 git add .
