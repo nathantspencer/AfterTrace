@@ -10,22 +10,12 @@ void DataWindow::Update(float deltaSeconds)
 {
     GetStylePainter()->PaintDataWindow();
     
-    // initial geometry
     int glfwWidth, glfwHeight;
     glfwGetWindowSize(GetGlfwWindow(), &glfwWidth, &glfwHeight);
-    ImGui::SetNextWindowPos(ImVec2(glfwWidth / 6.0f, 20.0f), ImGuiCond_Once);
-    ImGui::SetNextWindowSize(ImVec2(5.0f * glfwWidth / 6.0f, glfwHeight), ImGuiCond_Once);
-    
-    if  (m_leftOffset == -1.0f)
-    {
-        m_leftOffset = glfwWidth / 4.0f;
-    }
+    ImGui::SetNextWindowPos(ImVec2(glfwWidth - c_width, 20.0f), ImGuiCond_Always);
+    ImGui::SetNextWindowSize(ImVec2(c_width, glfwHeight), ImGuiCond_Once);
     
     ImGui::Begin(GetTitle(), NULL, GetFlags());
-    
-    // update geometry
-    ImGui::SetWindowSize(ImVec2(glfwWidth - m_leftOffset, glfwHeight), ImGuiCond_Always);
-    ImGui::SetWindowPos(ImVec2(m_leftOffset, 20.0f), ImGuiCond_Always);
     
     ImGui::Text("Your data live here.");
     ImGui::End();

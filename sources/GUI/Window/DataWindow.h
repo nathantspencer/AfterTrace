@@ -17,7 +17,7 @@ class DataWindow : public IWindow
          *  @param glfwWindow a pointer to the parent `GLFWwindow`
          */
         DataWindow(const char* title,  StylePainter* stylePainter, GLFWwindow* glfwWindow) :
-            IWindow(title, stylePainter, glfwWindow), m_leftOffset(-1.0f) {};
+            IWindow(title, stylePainter, glfwWindow), c_width(400) {};
     
         /*! The destructor for `DataWindow`.
          */
@@ -31,5 +31,5 @@ class DataWindow : public IWindow
     
     private:
 
-        float m_leftOffset;
+        const int c_width;
 };

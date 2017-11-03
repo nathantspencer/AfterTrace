@@ -17,7 +17,7 @@ class AdjustmentWindow : public IWindow
          *  @param glfwWindow a pointer to the parent `GLFWwindow`
          */
         AdjustmentWindow(const char* title, StylePainter* stylePainter, GLFWwindow* glfwWindow) :
-            IWindow(title, stylePainter, glfwWindow) {};
+            IWindow(title, stylePainter, glfwWindow), c_width(300) {};
     
         /*! The destructor for `AdjustmentWindow`.
          */
@@ -31,4 +31,5 @@ class AdjustmentWindow : public IWindow
     
     private:
     
+        int c_width;
 };
