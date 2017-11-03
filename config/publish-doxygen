@@ -1,11 +1,13 @@
 #!/bin/bash
 
+# Define variables
 REPO_PATH=git@github.com:nathantspencer/NeuroStudio.git
 HTML_PATH=./docs
 COMMIT_USER="DoxygenScribe"
 COMMIT_EMAIL="nathantspencer@gmail.com"
 CHANGESET=$(git rev-parse --verify HEAD)
 
+# Create gh-pages repo at destination
 rm -rf $HTML_PATH
 mkdir -p $HTML_PATH
 cd $HTML_PATH
@@ -13,12 +15,13 @@ git clone -b gh-pages $REPO_PATH --single-branch
 git rm -rf .
 cd -
 
-doxygen ./config/Doxyfile
+doxygen
 
+# Push result to Github
 cd $HTML_PATH
 git add .
 git config user.name $COMMIT_USER
 git config user.email $COMMIT_EMAIL
-git commit -m "Automated documentation build for changeset $CHANGESET."
+git commit -m "DoxygenScribe build for changeset $CHANGESET."
 git push origin gh-pages
 cd -
