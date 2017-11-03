@@ -12,4 +12,4 @@ Work on this project is ongoing and many features are not yet available. As prog
 
 Documentation for this project is powered by [Doxygen](http://www.stack.nl/~dimitri/doxygen/) and is built and pushed to the branch `gh-pages` automatically as part of the Travis CI build.
 
-Documentation is hosted on the [GitHub Pages site of this repository](https://nathantspencer.github.io/NeuroStudio/).
+Documentation is hosted on the [GitHub Pages site for this repository](https://nathantspencer.github.io/NeuroStudio/).
