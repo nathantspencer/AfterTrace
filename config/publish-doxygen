@@ -11,8 +11,7 @@ CHANGESET=$(git rev-parse --verify HEAD)
 rm -rf $HTML_PATH
 mkdir -p $HTML_PATH
 cd $HTML_PATH
-git clone $REPO_PATH
-git checkout -f gh-pages
+git clone $REPO_PATH --branch gh-pages --single-branch .
 git rm -rf .
 cd -
 
