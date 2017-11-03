@@ -2,7 +2,7 @@
 
 # Define variables
 REPO_PATH=git@github.com:nathantspencer/NeuroStudio.git
-HTML_PATH=./docs
+HTML_PATH=./config/docs
 COMMIT_USER="DoxygenScribe"
 COMMIT_EMAIL="nathantspencer@gmail.com"
 CHANGESET=$(git rev-parse --verify HEAD)
