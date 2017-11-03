@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['vertex',['Vertex',['../class_vertex.html',1,'']]]
+  ['stylepainter',['StylePainter',['../class_style_painter.html',1,'']]],
+  ['swc',['SWC',['../class_s_w_c.html',1,'']]]
 ];

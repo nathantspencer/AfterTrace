@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['writer',['Writer',['../class_writer.html#aedc04cd5fb7b4b99d3ad906fef2116ce',1,'Writer']]],
-  ['writeswc',['WriteSWC',['../class_writer.html#a3ced08b79cf32c0e56372d049ba54487',1,'Writer']]]
+  ['vertex',['Vertex',['../class_vertex.html#a97488994a2482d70da74e1b91d40e169',1,'Vertex::Vertex()'],['../class_vertex.html#a3e345038168308d1376e996f503cc7fa',1,'Vertex::Vertex(uint64_t id, Type type, glm::vec3 position, float radius, int64_t parentId)']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['stylepainter',['StylePainter',['../class_style_painter.html',1,'']]],
-  ['swc',['SWC',['../class_s_w_c.html',1,'']]]
+  ['renderoptionswindow',['RenderOptionsWindow',['../class_render_options_window.html',1,'']]]
 ];
