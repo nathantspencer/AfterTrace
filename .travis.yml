@@ -16,4 +16,4 @@ after_success:
 - echo $PWD
 - brew update
 - brew install doxygen
-- bash ./config/publish-doxygen
+- bash ./config/doxygen-scribe
