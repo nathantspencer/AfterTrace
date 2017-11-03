@@ -12,7 +12,7 @@ class DataWindow : public IWindow
     
         /*! The constructor for `DataWindow`.
          *
-         *  @param title the string title of the Data Window
+         *  @param title the string title of the data window
          *  @param stylePainter a pointer to the `stylePainter` that styles the window
          *  @param glfwWindow a pointer to the parent `GLFWwindow`
          */
