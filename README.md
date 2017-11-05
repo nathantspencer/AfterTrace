@@ -1,6 +1,6 @@
 # Introduction
 
-[![Build Status](https://travis-ci.org/nathantspencer/NeuroStudio.svg?branch=master)](https://travis-ci.org/nathantspencer/AfterTrace)
+[![Build Status](https://travis-ci.org/nathantspencer/AfterTrace.svg?branch=master)](https://travis-ci.org/nathantspencer/AfterTrace)
 [![docs: doxygen](https://img.shields.io/badge/docs-doxygen-blue.svg)](https://nathantspencer.github.io/AfterTrace/)
 [![license: GPL v3](https://img.shields.io/badge/license-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 

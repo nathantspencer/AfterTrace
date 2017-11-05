@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(NeuroStudio)
+project(AfterTrace)
 set(CMAKE_CXX_STANDARD 14)
 
 message("Executing gl3w_gen.py")
@@ -33,9 +33,9 @@ source_group(GUI\\Window FILES ${SOURCES_GUI_WINDOW})
 source_group(GUI\\MenuBar FILES ${SOURCES_GUI_MENUBAR})
 
 #======================# TARGETS #===========================#
-add_executable(NeuroStudio ${SOURCES})
+add_executable(AfterTrace ${SOURCES})
 
 #======================# LINKAGE #===========================#
 file(GLOB IMGUI libs/imgui/*.cpp libs/imgui/*.h)
 add_library(imgui ${IMGUI})
-target_link_libraries(NeuroStudio imgui glfw gl3w)
+target_link_libraries(AfterTrace imgui glfw gl3w)
