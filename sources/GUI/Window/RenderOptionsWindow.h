@@ -17,7 +17,7 @@ class RenderOptionsWindow : public IWindow
          *  @param glfwWindow a pointer to the parent `GLFWwindow`
          */
         RenderOptionsWindow(const char* title, StylePainter* stylePainter, GLFWwindow* glfwWindow) :
-            IWindow(title, stylePainter, glfwWindow), c_width(300) {};
+            IWindow(title, stylePainter, glfwWindow) {};
     
         /*! The destructor for `RenderOptionsWindow`.
          */
@@ -31,5 +31,4 @@ class RenderOptionsWindow : public IWindow
     
     private:
     
-        int c_width;
 };

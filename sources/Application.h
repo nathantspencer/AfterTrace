@@ -6,6 +6,7 @@
 #include "GUI/Window/AdjustmentWindow.h"
 #include "GUI/Window/DataWindow.h"
 #include "GUI/Window/RenderOptionsWindow.h"
+#include "GUI/Window/RenderWindow.h"
 
 /*! The main application class.
  *
@@ -43,6 +44,7 @@ class Application
         MainMenuBar         m_mainMenuBar;
         AdjustmentWindow    m_adjustmentWindow;
         RenderOptionsWindow m_renderOptionsWindow;
+        RenderWindow        m_renderWindow;
         DataWindow          m_dataWindow;
     
         StylePainter        m_stylePainter;

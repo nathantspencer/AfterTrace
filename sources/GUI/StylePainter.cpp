@@ -16,6 +16,7 @@ StylePainter::StylePainter() :
     m_colors["offWhite"]    = ImVec4(0.81f, 0.81f, 0.82f, 1.00f);
     
     //======| Blacks |===========================================
+    m_colors["nearBlack"]   = ImVec4(0.05f, 0.05f, 0.06f, 1.00f);
     m_colors["blackShadow"] = ImVec4(0.00f, 0.00f, 0.00f, 0.40f);
 }
 
@@ -39,6 +40,17 @@ void StylePainter::PaintRenderOptionsWindow()
     auto& style = ImGui::GetStyle();
     style.Colors[ImGuiCol_Text]             = m_colors["offWhite"];
     style.Colors[ImGuiCol_WindowBg]         = m_colors["gray"];
+    style.Colors[ImGuiCol_Border]           = m_colors["blackShadow"];
+    style.Colors[ImGuiCol_BorderShadow]     = m_colors["whiteShadow"];
+    style.Colors[ImGuiCol_TitleBg]          = m_colors["purple"];
+    style.Colors[ImGuiCol_TitleBgActive]    = m_colors["lightPurple"];
+}
+
+void StylePainter::PaintRenderWindow()
+{
+    auto& style = ImGui::GetStyle();
+    style.Colors[ImGuiCol_Text]             = m_colors["offWhite"];
+    style.Colors[ImGuiCol_WindowBg]         = m_colors["nearBlack"];
     style.Colors[ImGuiCol_Border]           = m_colors["blackShadow"];
     style.Colors[ImGuiCol_BorderShadow]     = m_colors["whiteShadow"];
     style.Colors[ImGuiCol_TitleBg]          = m_colors["purple"];

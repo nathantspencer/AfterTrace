@@ -35,6 +35,13 @@ class StylePainter
      */
     void    PaintRenderOptionsWindow();
     
+    /*! Applies `ImGui` styles used by the `RenderWindow` class.
+     *
+     *  This function should be called just before `ImGui::Begin()` in order to apply the
+     *  appropriate styles to the new window it creates.
+     */
+    void    PaintRenderWindow();
+    
     /*! Applies `ImGui` styles used by the `DataWindow` class.
      *
      *  This function should be called just before `ImGui::Begin()` in order to apply the

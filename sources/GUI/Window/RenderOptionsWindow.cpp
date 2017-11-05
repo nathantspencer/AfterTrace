@@ -14,8 +14,8 @@ void RenderOptionsWindow::Update(float deltaSeconds)
     
     int glfwWidth, glfwHeight;
     glfwGetWindowSize(GetGlfwWindow(), &glfwWidth, &glfwHeight);
-    ImGui::SetWindowPos(ImVec2(0.0f, 20.0f + glfwHeight / 2.0f), ImGuiCond_Once);
-    ImGui::SetWindowSize(ImVec2(c_width, (glfwHeight / 2.0f) - 20.0f), ImGuiCond_Once);
+    ImGui::SetWindowPos(ImVec2(300.0f, glfwHeight - 200.f), ImGuiCond_Always);
+    ImGui::SetWindowSize(ImVec2(glfwWidth - 700.0f, 200.0f), ImGuiCond_Always);
     
     ImGui::Text("Adjust render settings.");
     

@@ -8,6 +8,7 @@ Application::Application(GLFWwindow* glfwWindow) :
     m_mainMenuBar(&m_stylePainter),
     m_adjustmentWindow("Adjustment Window", &m_stylePainter, m_glfwWindow),
     m_renderOptionsWindow("Render Options Window", &m_stylePainter, m_glfwWindow),
+    m_renderWindow("Render Window", &m_stylePainter, m_glfwWindow),
     m_dataWindow("Data Window", &m_stylePainter, m_glfwWindow),
     m_stylePainter(),
     c_showImguiDemo(false)
@@ -20,6 +21,7 @@ Application::Application(GLFWwindow* glfwWindow) :
     
     m_adjustmentWindow.SetFlags(windowFlags);
     m_renderOptionsWindow.SetFlags(windowFlags);
+    m_renderWindow.SetFlags(windowFlags);
     m_dataWindow.SetFlags(windowFlags);
 }
 
@@ -34,6 +36,7 @@ void Application::Update(float deltaSeconds)
     m_mainMenuBar.Update(deltaSeconds);
     m_adjustmentWindow.Update(deltaSeconds);
     m_renderOptionsWindow.Update(deltaSeconds);
+    m_renderWindow.Update(deltaSeconds);
     m_dataWindow.Update(deltaSeconds);
     
     if (c_showImguiDemo)
