@@ -7,6 +7,7 @@ var searchData=
   ['_7emainmenubar',['~MainMenuBar',['../class_main_menu_bar.html#ac566782bde25479c3417ec2c1967d066',1,'MainMenuBar']]],
   ['_7eparser',['~Parser',['../class_parser.html#a3e658b5917a93a3ef648050d060e3a93',1,'Parser']]],
   ['_7erenderoptionswindow',['~RenderOptionsWindow',['../class_render_options_window.html#a543157b7c010bdc1f9125715175fa016',1,'RenderOptionsWindow']]],
+  ['_7erenderwindow',['~RenderWindow',['../class_render_window.html#ae17a8d98de14f8ddbbedbee39cf774e0',1,'RenderWindow']]],
   ['_7estylepainter',['~StylePainter',['../class_style_painter.html#a06c872080ffd7cc3a8a2c923a8a7877b',1,'StylePainter']]],
   ['_7eswc',['~SWC',['../class_s_w_c.html#aac1b2d5dfae8f4d3145bdda2d99db95e',1,'SWC']]],
   ['_7ewriter',['~Writer',['../class_writer.html#a6f57399b94731301d267ce10a2f52ea3',1,'Writer']]]
