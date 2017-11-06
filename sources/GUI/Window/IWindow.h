@@ -14,10 +14,11 @@ class IWindow
 {
     public:
     
-        /*! Abstract class for GUI windows within the `GLFWwindow`.
+        /*! Constructor for `IWindow`.
          *
-         *  A single instance of this class is created by `Application` and passed to the `GUI`
-         *  elements it owns.
+         *  @param title the string title of the render options window
+         *  @param stylePainter a pointer to the `stylePainter` that styles the window
+         *  @param glfwWindow a pointer to the parent `GLFWwindow`
          */
         IWindow(const char* title, StylePainter* stylePainter, GLFWwindow* glfwWindow);
     

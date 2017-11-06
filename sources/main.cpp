@@ -9,8 +9,6 @@
 #include <imgui.h>
 #include "imgui_impl_glfw_gl3.h"
 
-
-
 static void error_callback(int error, const char* description)
 {
     fprintf(stderr, "Error %d: %s\n", error, description);
