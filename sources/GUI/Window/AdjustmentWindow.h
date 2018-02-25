@@ -2,7 +2,7 @@
 
 #include "IWindow.h"
 
-/*! Makes `ImGui` calls to draw and populate the Adjustment Window.
+/*! Makes `ImGui` calls to draw and populate the adjustment window.
  *
  *  A single instance of this class is created and owned by `Application`.
  */
@@ -12,12 +12,9 @@ class AdjustmentWindow : public IWindow
     
         /*! The constructor for `AdjustmentWindow`.
          *
-         *  @param title the string title of the adjustment window
-         *  @param stylePainter a pointer to the `stylePainter` that styles the window
          *  @param glfwWindow a pointer to the parent `GLFWwindow`
          */
-        AdjustmentWindow(const char* title, StylePainter* stylePainter, GLFWwindow* glfwWindow) :
-            IWindow(title, stylePainter, glfwWindow), c_width(300) {};
+        AdjustmentWindow(GLFWwindow* glfwWindow);
     
         /*! The destructor for `AdjustmentWindow`.
          */
@@ -31,5 +28,6 @@ class AdjustmentWindow : public IWindow
     
     private:
     
-        int c_width;
+        const char* c_title;
+        const int c_width;
 };

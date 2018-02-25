@@ -2,7 +2,7 @@
 
 #include "IWindow.h"
 
-/*! Makes `ImGui` calls to draw and populate the Render Options Window.
+/*! Makes `ImGui` calls to draw and populate the render options window.
  *
  *  A single instance of this class is created and owned by `Application`.
  */
@@ -12,13 +12,10 @@ class RenderOptionsWindow : public IWindow
     
         /*! The constructor for `RenderOptionsWindow`.
          *
-         *  @param title the string title of the render options window
-         *  @param stylePainter a pointer to the `stylePainter` that styles the window
          *  @param glfwWindow a pointer to the parent `GLFWwindow`
          */
-        RenderOptionsWindow(const char* title, StylePainter* stylePainter, GLFWwindow* glfwWindow) :
-            IWindow(title, stylePainter, glfwWindow) {};
-    
+        RenderOptionsWindow(GLFWwindow* glfwWindow);
+
         /*! The destructor for `RenderOptionsWindow`.
          */
         ~RenderOptionsWindow();
@@ -31,4 +28,5 @@ class RenderOptionsWindow : public IWindow
     
     private:
     
+        const char* c_title;
 };

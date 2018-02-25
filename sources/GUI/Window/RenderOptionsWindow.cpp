@@ -2,15 +2,19 @@
 
 class IWindow;
 
+RenderOptionsWindow::RenderOptionsWindow(GLFWwindow* glfwWindow) :
+    IWindow(glfwWindow),
+    c_title("Render Options Window")
+{
+}
+
 RenderOptionsWindow::~RenderOptionsWindow()
 {
 }
 
 void RenderOptionsWindow::Update(float deltaSeconds)
 {
-    GetStylePainter()->PaintRenderOptionsWindow();
-    
-    ImGui::Begin(GetTitle(), NULL, GetFlags());
+    ImGui::Begin(c_title, NULL, GetFlags());
     
     int glfwWidth, glfwHeight;
     glfwGetWindowSize(GetGlfwWindow(), &glfwWidth, &glfwHeight);

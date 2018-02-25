@@ -2,7 +2,7 @@
 
 #include "IWindow.h"
 
-/*! Makes `ImGui` calls to draw and populate the Data Window.
+/*! Makes `ImGui` calls to draw and populate the data window.
  *
  *  A single instance of this class is created and owned by `Application`.
  */
@@ -12,12 +12,9 @@ class DataWindow : public IWindow
     
         /*! The constructor for `DataWindow`.
          *
-         *  @param title the string title of the data window
-         *  @param stylePainter a pointer to the `stylePainter` that styles the window
          *  @param glfwWindow a pointer to the parent `GLFWwindow`
          */
-        DataWindow(const char* title,  StylePainter* stylePainter, GLFWwindow* glfwWindow) :
-            IWindow(title, stylePainter, glfwWindow), c_width(400) {};
+        DataWindow(GLFWwindow* glfwWindow);
     
         /*! The destructor for `DataWindow`.
          */
@@ -31,5 +28,6 @@ class DataWindow : public IWindow
     
     private:
 
+        const char* c_title;
         const int c_width;
 };

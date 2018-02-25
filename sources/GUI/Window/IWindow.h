@@ -14,13 +14,11 @@ class IWindow
 {
     public:
     
-        /*! Constructor for `IWindow`.
+        /*! The constructor for `IWindow`.
          *
-         *  @param title the string title of the render options window
-         *  @param stylePainter a pointer to the `stylePainter` that styles the window
          *  @param glfwWindow a pointer to the parent `GLFWwindow`
          */
-        IWindow(const char* title, StylePainter* stylePainter, GLFWwindow* glfwWindow);
+        IWindow(GLFWwindow* glfwWindow);
     
         /*! Virtual destructor for `IWindow`.
          */
@@ -30,18 +28,17 @@ class IWindow
          *
          *  @param deltaSeconds the `float` number of seconds since the last update
          */
-        virtual void    Update(float deltaSeconds) = 0;
+        virtual void Update(float deltaSeconds) = 0;
 
-        void                SetFlags(ImGuiWindowFlags flags);
-        const char*         GetTitle() const;
-        ImGuiWindowFlags    GetFlags() const;
-        GLFWwindow*         GetGlfwWindow() const;
-        StylePainter*       GetStylePainter() const;
+        void SetFlags(ImGuiWindowFlags flags);
+    
+    protected:
+    
+        ImGuiWindowFlags GetFlags() const;
+        GLFWwindow* GetGlfwWindow() const;
     
     private:
     
-        const char*         m_title;
-        ImGuiWindowFlags    m_flags;
-        GLFWwindow*         m_glfwWindow;
-        StylePainter*       m_stylePainter;
+        ImGuiWindowFlags m_flags;
+        GLFWwindow* m_glfwWindow;
 };

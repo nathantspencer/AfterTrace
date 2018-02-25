@@ -2,15 +2,20 @@
 
 class IWindow;
 
+AdjustmentWindow::AdjustmentWindow(GLFWwindow* glfwWindow) :
+    IWindow(glfwWindow),
+    c_title("Adjustment Window"),
+    c_width(300)
+{
+}
+
 AdjustmentWindow::~AdjustmentWindow()
 {
 }
 
 void AdjustmentWindow::Update(float deltaSeconds)
 {
-    GetStylePainter()->PaintAdjustmentWindow();
-    
-    ImGui::Begin(GetTitle(), NULL, GetFlags());
+    ImGui::Begin(c_title, NULL, GetFlags());
     
     int glfwWidth, glfwHeight;
     glfwGetWindowSize(GetGlfwWindow(), &glfwWidth, &glfwHeight);

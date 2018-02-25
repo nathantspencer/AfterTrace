@@ -2,7 +2,7 @@
 
 #include <imgui.h>
 
-MainMenuBar::MainMenuBar(StylePainter* stylePainter) : m_stylePainter(stylePainter)
+MainMenuBar::MainMenuBar()
 {
 }
 
@@ -12,7 +12,6 @@ MainMenuBar::~MainMenuBar()
 
 void MainMenuBar::Update(float deltaSeconds)
 {
-    m_stylePainter->PaintMainMenuBar();
     ImGui::BeginMainMenuBar();
     
     if (ImGui::BeginMenu("File"))

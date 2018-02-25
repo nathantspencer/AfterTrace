@@ -2,11 +2,7 @@
 
 #include <GLFW/glfw3.h>
 
-#include "GUI/MenuBar/MainMenuBar.h"
-#include "GUI/Window/AdjustmentWindow.h"
-#include "GUI/Window/DataWindow.h"
-#include "GUI/Window/RenderOptionsWindow.h"
-#include "GUI/Window/RenderWindow.h"
+#include "GUI/IWindowLayout.h"
 
 /*! The main application class.
  *
@@ -41,13 +37,7 @@ class Application
     
         GLFWwindow* m_glfwWindow;
     
-        MainMenuBar         m_mainMenuBar;
-        AdjustmentWindow    m_adjustmentWindow;
-        RenderOptionsWindow m_renderOptionsWindow;
-        RenderWindow        m_renderWindow;
-        DataWindow          m_dataWindow;
+        std::unique_ptr<IWindowLayout> m_windowLayout;
     
-        StylePainter        m_stylePainter;
-    
-        const bool          c_showImguiDemo;
+        const bool c_showImguiDemo;
 };
