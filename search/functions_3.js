@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['mainmenubar',['MainMenuBar',['../class_main_menu_bar.html#af059684dec61f7aaea9c035779d49cd9',1,'MainMenuBar']]]
+  ['mainmenubar',['MainMenuBar',['../class_main_menu_bar.html#a83d14ba9921c39968d510f0f19cf3a61',1,'MainMenuBar']]],
+  ['mainwindowlayout',['MainWindowLayout',['../class_main_window_layout.html#aff09c989d737165cb93bf666a1b64a16',1,'MainWindowLayout']]]
 ];
