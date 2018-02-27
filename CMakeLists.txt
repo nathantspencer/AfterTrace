@@ -11,6 +11,7 @@ include_directories(libs/imgui)
 include_directories(libs/glfw/include)
 include_directories(libs/gl3w/include)
 include_directories(libs/glm)
+include_directories(libs/nativefiledialog/src/include)
 include_directories(sources)
 
 #=====================# EXTERNALS #==========================#
@@ -38,4 +39,4 @@ add_executable(AfterTrace ${SOURCES})
 #======================# LINKAGE #===========================#
 file(GLOB IMGUI libs/imgui/*.cpp libs/imgui/*.h)
 add_library(imgui ${IMGUI})
-target_link_libraries(AfterTrace imgui glfw gl3w)
+target_link_libraries(AfterTrace imgui glfw gl3w ${PROJECT_SOURCE_DIR}/libs/nativefiledialog/build/lib/Release/x64/libnfd.a)

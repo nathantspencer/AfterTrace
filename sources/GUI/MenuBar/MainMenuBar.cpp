@@ -1,6 +1,7 @@
 #include "MainMenuBar.h"
 
 #include <imgui.h>
+#include <nfd.h>
 
 MainMenuBar::MainMenuBar()
 {
@@ -16,7 +17,15 @@ void MainMenuBar::Update(float deltaSeconds)
     
     if (ImGui::BeginMenu("File"))
     {
-        ImGui::MenuItem("Dummy Menu Item");
+        if (ImGui::MenuItem("Open"))
+        {
+            nfdchar_t* selectedFile;
+            nfdresult_t result = NFD_OpenDialog(NULL, NULL, &selectedFile);
+            
+            if (result == NFD_OKAY)
+            {
+            }
+        }
         ImGui::EndMenu();
     }
     
