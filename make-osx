@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Echo colors
+GREEN='\033[0;32m'
+NORMAL='\033[0m'
+
+# Make nativefiledialog
+echo -e "\n${GREEN}Making nativefiledialog...${NORMAL}"
+cd libs/nativefiledialog/build
+rm -rf obj/ lib/
+cd gmake_macosx
+make
+cd ../../../..
+
+# Make AfterTrace
+echo -e "\n${GREEN}Making AfterTrace...${NORMAL}"
+mkdir build
+cd build
+cmake -G Xcode ..
+cd ..
+echo -e "\n"
