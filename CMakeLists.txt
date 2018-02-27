@@ -28,7 +28,7 @@ file(GLOB SOURCES_GUI sources/GUI/*.cpp sources/GUI/*.h)
 file(GLOB_RECURSE SOURCES_GUI_WINDOW sources/GUI/Window/*.cpp sources/GUI/Window/*.h)
 file(GLOB_RECURSE SOURCES_GUI_MENUBAR sources/GUI/MenuBar/*.cpp sources/GUI/MenuBar/*.h)
 
-file(GLOB_RECURSE IMGUI libs/imgui/*.cpp libs/imgui/*.h)
+file(GLOB IMGUI libs/imgui/*.cpp libs/imgui/*.h)
 file(GLOB_RECURSE NFD ${NFD}/src/*.cpp ${NFD}/src/*.h ${NFD}/src/*.m ${NFD}/src/*.c)
 
 source_group("" FILES ${SOURCES})
