@@ -6,6 +6,8 @@ message("Executing gl3w_gen.py")
 execute_process(COMMAND python gl3w_gen.py --root ${PROJECT_BINARY_DIR}/libs/gl3w
 WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/libs/gl3w)
 
+set(NFD libs/nativefiledialog)
+
 #======================# INCLUDES #==========================#
 include_directories(libs/imgui)
 include_directories(libs/glfw/include)
@@ -26,6 +28,9 @@ file(GLOB SOURCES_GUI sources/GUI/*.cpp sources/GUI/*.h)
 file(GLOB_RECURSE SOURCES_GUI_WINDOW sources/GUI/Window/*.cpp sources/GUI/Window/*.h)
 file(GLOB_RECURSE SOURCES_GUI_MENUBAR sources/GUI/MenuBar/*.cpp sources/GUI/MenuBar/*.h)
 
+file(GLOB_RECURSE IMGUI libs/imgui/*.cpp libs/imgui/*.h)
+file(GLOB_RECURSE NFD ${NFD}/src/*.cpp ${NFD}/src/*.h ${NFD}/src/*.m ${NFD}/src/*.c)
+
 source_group("" FILES ${SOURCES})
 source_group(Model FILES ${SOURCES_MODEL})
 source_group(FileIO FILES ${SOURCES_FILEIO})
@@ -37,6 +42,6 @@ source_group(GUI\\MenuBar FILES ${SOURCES_GUI_MENUBAR})
 add_executable(AfterTrace ${SOURCES})
 
 #======================# LINKAGE #===========================#
-file(GLOB IMGUI libs/imgui/*.cpp libs/imgui/*.h)
+add_library(nativefiledialog ${NFD})
 add_library(imgui ${IMGUI})
-target_link_libraries(AfterTrace imgui glfw gl3w ${PROJECT_SOURCE_DIR}/libs/nativefiledialog/build/lib/Release/x64/libnfd.a)
+target_link_libraries(AfterTrace imgui glfw gl3w ${PROJECT_SOURCE_DIR}/${NFD}/build/lib/Release/x64/libnfd.a)

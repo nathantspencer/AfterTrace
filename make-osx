@@ -18,4 +18,3 @@ mkdir build
 cd build
 cmake -G Xcode ..
 cd ..
-echo -e "\n"
