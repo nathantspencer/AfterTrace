@@ -4,8 +4,7 @@ matrix:
   - compiler: clang
     os: osx
 script:
-- mkdir Build && cd Build
-- cmake ..
+- ./make-osx
 before_install:
 - openssl aes-256-cbc -K $encrypted_a9c82c192cfe_key -iv $encrypted_a9c82c192cfe_iv
   -in config/travisci_rsa.enc -out config/travisci_rsa -d
