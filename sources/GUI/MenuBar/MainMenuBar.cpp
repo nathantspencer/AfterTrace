@@ -26,6 +26,17 @@ void MainMenuBar::Update(float deltaSeconds)
             {
             }
         }
+        
+        if (ImGui::MenuItem("Save"))
+        {
+            nfdchar_t* saveLocation;
+            nfdresult_t result = NFD_SaveDialog(NULL, NULL, &saveLocation);
+            
+            if (result == NFD_OKAY)
+            {
+            }
+        }
+        
         ImGui::EndMenu();
     }
     
