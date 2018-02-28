@@ -5,7 +5,7 @@ matrix:
     os: osx
 script:
 - ./make-osx
-- echo -e " require 'xcodeproj' \n project = Xcodeproj::Project.open \n 'build/AfterTrace.xcodeproj' \n project.recreate_user_schemes \n project.save " | ruby
+- echo -e " require 'xcodeproj' \n project = Xcodeproj::Project.open 'build/AfterTrace.xcodeproj' \n project.recreate_user_schemes \n project.save " | ruby
 - xcodebuild -project build/AfterTrace.xcodeproj -scheme AfterTrace
 before_install:
 - openssl aes-256-cbc -K $encrypted_a9c82c192cfe_key -iv $encrypted_a9c82c192cfe_iv
