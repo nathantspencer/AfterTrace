@@ -8,7 +8,6 @@ script:
 - echo -e " require 'xcodeproj' \n project = Xcodeproj::Project.open 'build/AfterTrace.xcodeproj' \n project.recreate_user_schemes \n project.save " | ruby
 - xcodebuild -project build/AfterTrace.xcodeproj -scheme AfterTrace
 before_install:
-- rvm use 2.1.2
 - gem install xcodeproj
 - openssl aes-256-cbc -K $encrypted_a9c82c192cfe_key -iv $encrypted_a9c82c192cfe_iv
   -in config/travisci_rsa.enc -out config/travisci_rsa -d
